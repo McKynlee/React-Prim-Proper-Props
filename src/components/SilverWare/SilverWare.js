@@ -13,12 +13,6 @@ function SilverWare({ name, count }) {
       <div>
         {silverWareName}: {count * 2}
       </div>
-      <div>
-        {silverWareName}: {count * 2}
-      </div>
-      <div>
-        {silverWareName}: {count * 2}
-      </div>
     </div>
   );
 }
