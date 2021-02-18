@@ -14,6 +14,7 @@ function GuestList({ guestList }) {
             <tr key={guest.id}>
               <td>{guest.name}</td>
               <td>{String(guest.kidsMeal)}</td>
+              <td><button>DELETE</button></td>
             </tr>
           ))}
         </tbody>
