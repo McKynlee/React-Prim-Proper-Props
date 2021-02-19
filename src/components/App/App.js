@@ -31,7 +31,11 @@ function App() {
 
 
   const addGuest = () => {
-    axios.post('/guests', { name: newGuestName, kidsMeal: newGuestMeal })
+    axios.post('/guests',
+      {
+        name: newGuestName,
+        kidsMeal: newGuestMeal
+      })
       .then(response => {
         // clear inputs
         setNewGuestName('');
@@ -45,6 +49,20 @@ function App() {
       })
   };
 
+  const deleteGuest = (guestId) => {
+    console.log('in deleteGuest', guestId);
+    console.log('guestList:', guestList);
+
+    axios.delete(`/guests/${guestId}`)
+      .then(response => {
+        console.log('guest deleted');
+        getGuests();
+      }).catch(error => {
+        console.log('error deleting guest');
+        alert('error deleting guest');
+      })
+
+  } // end deleteGuest
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,8 +85,10 @@ function App() {
         setNewGuestName={setNewGuestName}
         setNewGuestMeal={setNewGuestMeal}
         handleSubmit={handleSubmit}
+        deleteGuest={deleteGuest}
       />
-      <GuestList guestList={guestList} />
+      <GuestList guestList={guestList}
+        deleteGuest={deleteGuest} />
       <DinnerSupplies count={guestList.length} />
       <Footer />
     </div>

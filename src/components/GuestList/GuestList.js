@@ -1,4 +1,6 @@
-function GuestList({ guestList }) {
+import Guest from '../Guest/Guest'
+
+function GuestList({ guestList, deleteGuest }) {
   return (
     <div>
       <h2>Guest List</h2>
@@ -10,12 +12,10 @@ function GuestList({ guestList }) {
           </tr>
         </thead>
         <tbody>
-          {guestList.map(guest => (
-            <tr key={guest.id}>
-              <td>{guest.name}</td>
-              <td>{String(guest.kidsMeal)}</td>
-            </tr>
-          ))}
+          {guestList.map(guest => {
+            return <Guest key={guest.id}
+              guest={guest} deleteGuest={deleteGuest} />
+          })}
         </tbody>
       </table>
     </div>
